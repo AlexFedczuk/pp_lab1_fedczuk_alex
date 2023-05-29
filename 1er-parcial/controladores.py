@@ -223,3 +223,50 @@ def controlador_opcion_catorce(lista:list) -> int:
         retorno = 0
 
     return retorno
+
+def controlador_opcion_quince(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        valor_ingresado = pedir_un_numero_flotante_regex("\nIngrese un valor: ", "ERROR! Ha ingresado un valor invalido.")
+        lista_jugadores_encontrados = encontrar_jugadores_por_mayor_valor(lista, 'porcentaje_tiros_libres', valor_ingresado)
+        print(f"\n***** Los jugadores que tienen un porcentaje de tiros libres superio al valo ingresado ({valor_ingresado}) *****")
+        listar_nombres_jugadores(lista_jugadores_encontrados)
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_dieciseis(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        promedio = calcular_promedio_excluyendo(lista, calcular_jugador_con_menor_valor(lista, 'promedio_puntos_por_partido'))
+        print(f"\nEl promedio de puntos por partido del equipo excluyendo al jugador con la menor cantidad de puntos por partido es: {promedio}")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_diecisiete(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_mayores_logros = encontrar_jugador_mayores_logros(lista)
+        print(f"\nEl jugador con la mayor cantidad de logros obtenidos es {jugador_mayores_logros['nombre']} con un total de {contar_cantidad_logros_un_jugador(jugador_mayores_logros)}")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno

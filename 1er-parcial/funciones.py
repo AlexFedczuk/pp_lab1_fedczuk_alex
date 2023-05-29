@@ -488,3 +488,109 @@ def comprobar_valor_mayor_a_otro(valor_uno, valor_dos) -> bool:
     if valor_uno > valor_dos:
         retorno = True
     return retorno
+
+def calcular_promedio_excluyendo(lista:list, jugador_excluido:dict) -> float:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        acumulador = 0
+        for jugador in lista:
+            if jugador != jugador_excluido:
+                acumulador = acumulador + jugador['estadisticas']['promedio_puntos_por_partido']
+        promedio = round(float(acumulador/len(lista) - 1), 2)
+        retorno = promedio
+    else:
+        print("ERROR! No hay datos en la lista como para realizar un promedio.")
+        retorno = 0
+
+    return retorno
+
+def calcular_jugador_con_menor_valor(lista:list, clave:str) -> dict:
+    """"
+    """
+    retorno = {}
+    jugador_menor = {}
+    bandera = 0
+
+    if len(lista) > 0:
+        for jugador in lista:
+            if bandera == 0 or jugador_menor['estadisticas'][clave] > jugador['estadisticas'][clave]:
+                jugador_menor = jugador
+                bandera = 1
+    else:
+        print(f"ERROR! No hay datos en la lista como para encontrar un jugador por {clave}.")
+
+    retorno = jugador_menor
+
+    return retorno
+
+def encontrar_jugador_mayores_logros(lista:list) -> dict:
+    """
+    """
+    retorno = {}
+    bandera = 0
+
+    if len(lista) > 0:
+        for jugador in lista:
+            if bandera == 0 or contar_cantidad_logros_un_jugador(jugador_mayores_logros) < contar_cantidad_logros_un_jugador(jugador):
+                jugador_mayores_logros = jugador
+                bandera = 1
+        retorno = jugador_mayores_logros
+    else:
+        print("ERROR! No se puede contar la cantidad de logros de los jugarores con una lista vacia.")
+
+    return retorno
+
+def contar_logros_un_jugador(jugador:dict) -> int:
+    """
+    """
+    retorno = -1
+
+    if jugador != {}:
+        retorno = len(jugador['logros'])
+    else:
+        print("ERROR! No hay datos cargados en el jugador indicado.")
+    return retorno
+
+def contar_cantidad_logros_un_jugador(jugador:dict) -> int:
+    """
+    """
+    retorno = -1
+    cantidad_logros = []
+
+    if jugador != {}:
+        for logro in jugador['logros']:
+            cantidad_logros.append(identificar_numero_entero(logro))
+        retorno = sumar_enteros_en_lista(cantidad_logros)
+    else:
+        print("ERROR! No hay datos cargados en el jugador indicado.")
+    return retorno
+
+def identificar_numero_entero(cadena:str) -> int:
+    """
+    """    
+    retorno = -1
+    patron = r'\d+'
+    resultado = re.match(patron, cadena)
+
+    if resultado:
+        retorno = int(resultado.group())
+    else:
+        retorno = 1
+    return retorno
+
+def sumar_enteros_en_lista(lista:list) -> int:
+    """
+    """
+    acumulador = 0
+    if len(lista) > 0:
+        for numero_entero in lista:
+            acumulador+=numero_entero
+    else:
+        print("ERROR! No se puede sumar elementos de una lista vacia.")
+
+    return acumulador
+
+
