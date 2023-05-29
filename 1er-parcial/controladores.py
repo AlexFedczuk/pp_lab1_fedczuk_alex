@@ -1,4 +1,3 @@
-import csv
 from funciones import *
 
 
@@ -28,7 +27,7 @@ def controlador_opcion_dos(lista:list) -> dict:
         mostrar_estadisticas_completas_un_jugador(jugador_encontrado)
         retorno = jugador_encontrado
     else:
-        print("\nERROR! No hay elementos cargados en la lista para mostrar.")
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
 
     return retorno
 
@@ -38,46 +37,41 @@ def controlador_opcion_tres(jugador:dict) -> int:
     retorno = -1    
 
     if jugador != {}:
-        nombre_del_csv = jugador['nombre'] + ".csv"
-        encabezado = ["Nombre",
-                      "Posición", 
-                      "Temporadas", 
-                      "Puntos totales", 
-                      "Promedio de puntos por partido", 
-                      "Rebotes totales", 
-                      "Promedio de rebotes por partido", 
-                      "Asistencias totales", 
-                      "Promedio de asistencias por partido", 
-                      "Robos totales", 
-                      "Bloqueos totales", 
-                      "Porcentaje de tiros de campo", 
-                      "Porcentaje de tiros libres", 
-                      "Porcentaje de tiros triples"
-                      ]
-        estadisticas = [jugador["nombre"],
-                        jugador['posicion'],
-                        jugador['estadisticas']['temporadas'],
-                        jugador['estadisticas']['puntos_totales'],
-                        jugador['estadisticas']['promedio_puntos_por_partido'],
-                        jugador['estadisticas']['rebotes_totales'],
-                        jugador['estadisticas']['promedio_rebotes_por_partido'],
-                        jugador['estadisticas']['asistencias_totales'],
-                        jugador['estadisticas']['promedio_asistencias_por_partido'],
-                        jugador['estadisticas']['robos_totales'],
-                        jugador['estadisticas']['bloqueos_totales'],
-                        jugador['estadisticas']['porcentaje_tiros_de_campo'],
-                        jugador['estadisticas']['porcentaje_tiros_libres'],
-                        jugador['estadisticas']['porcentaje_tiros_triples']
-                        ]
-
-        with open(nombre_del_csv, 'w', newline='') as archivo_csv:
-            writer = csv.writer(archivo_csv)
-            writer.writerow(encabezado)
-            writer.writerow(estadisticas)
-        print("El archivo CSV ya se ha generado con exito.")
+        generar_archivo_csv(jugador)
         retorno = 1
     else:
         print("\nERROR! No hay elementos cargados como para ejecutar esta opción. Realice una operación en la opción 2 antes de realizar una operación en la opción 3.")
+        retorno = 0
+    return retorno
+
+def controlador_opcion_cuatro(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        nombre_ingresado = pedir_un_nombre_regex("\nIngrese el nombre del jugador que quiere buscar: ",
+                                                 "\nERROR! Ha ingresado un valor invalido. Ingrese caracteres alfabeticos.")
+        jugador_encontrado = encontrar_jugador_por_nombre(lista, nombre_ingresado)
+        mostrar_logros_un_jugador(jugador_encontrado)
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_cinco(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        promedio = calcular_promedio(lista)
+        print(f"\nEl promedio de puntos por partido de todo el equipo del Dream Team: {promedio}")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
         retorno = 0
 
     return retorno

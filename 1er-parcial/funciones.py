@@ -1,5 +1,6 @@
 import json
 import re
+import csv
 
 def mostrar_menu_principal():
     """
@@ -25,7 +26,7 @@ def mostrar_menu_principal():
     print("18. Mostrar los jugadores que hayan tenido un porcentaje de tiros triples superior a X valor.")
     print("19. Calcular y mostrar el jugador con la mayor cantidad de temporadas jugadas.")
     print("20. Mostrar los jugadores, ordenados por posición en la cancha, que hayan tenido un porcentaje de tiros de campo superior a X valor.")
-    print("23. Calcular de cada jugador cuál es su posición en cada uno de los siguientes ranking, ● Puntos, ● Rebotes, ● Asistencias, ● Robos.")
+    print("23. Calcular de cada jugador cuál es su posición en cada uno de los siguientes ranking: ● Puntos ● Rebotes ● Asistencias ● Robos.")
     print("0. Salir del programa")
 
 def cargar_lista_json(nombre_archivo_json:str) -> list:
@@ -261,4 +262,145 @@ def mostrar_estadisticas_completas_un_jugador(jugador:dict) -> int:
     print(f"Porcentaje de tiros libres: {jugador['estadisticas']['porcentaje_tiros_libres']}")
     print(f"Porcentaje de tiros triples: {jugador['estadisticas']['porcentaje_tiros_triples']}")
     
+    return retorno
+
+def generar_archivo_csv(jugador:dict) -> int:
+    retorno = -1
+
+    if jugador != {}:
+        nombre_del_csv = jugador['nombre'] + ".csv"
+
+        encabezado = ["Nombre",
+                      "Posición", 
+                      "Temporadas", 
+                      "Puntos totales", 
+                      "Promedio de puntos por partido", 
+                      "Rebotes totales", 
+                      "Promedio de rebotes por partido", 
+                      "Asistencias totales", 
+                      "Promedio de asistencias por partido", 
+                      "Robos totales", 
+                      "Bloqueos totales", 
+                      "Porcentaje de tiros de campo", 
+                      "Porcentaje de tiros libres", 
+                      "Porcentaje de tiros triples"
+                      ]
+        estadisticas = [jugador["nombre"],
+                        jugador['posicion'],
+                        jugador['estadisticas']['temporadas'],
+                        jugador['estadisticas']['puntos_totales'],
+                        jugador['estadisticas']['promedio_puntos_por_partido'],
+                        jugador['estadisticas']['rebotes_totales'],
+                        jugador['estadisticas']['promedio_rebotes_por_partido'],
+                        jugador['estadisticas']['asistencias_totales'],
+                        jugador['estadisticas']['promedio_asistencias_por_partido'],
+                        jugador['estadisticas']['robos_totales'],
+                        jugador['estadisticas']['bloqueos_totales'],
+                        jugador['estadisticas']['porcentaje_tiros_de_campo'],
+                        jugador['estadisticas']['porcentaje_tiros_libres'],
+                        jugador['estadisticas']['porcentaje_tiros_triples']
+                        ]
+        with open(nombre_del_csv, 'w', newline='') as archivo_csv:
+            writer = csv.writer(archivo_csv)
+            writer.writerow(encabezado)
+            writer.writerow(estadisticas)
+        print("El archivo CSV ya se ha generado con exito.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados como para ejecutar esta opción. Realice una operación en la opción 2 antes de realizar una operación en la opción 3.")
+        retorno = 0
+    return retorno
+
+def pedir_un_nombre(mensaje:str, mensaje_de_error:str) -> str:
+    """
+    """
+    while True:
+        nombre_ingresado = input(mensaje)
+
+        if nombre_ingresado.isalpha() == False:
+            print(mensaje_de_error)
+        else:
+            nombre_ingresado = nombre_ingresado.lower()
+            nombre_ingresado = nombre_ingresado.capitalize()
+            break
+    return nombre_ingresado
+
+def pedir_un_nombre_regex(mensaje:str, mensaje_de_error:str) -> str:
+    """
+    """
+    patron = r"^[A-Za-z\s]+$"
+    retorno = ""
+
+    while True:
+        nombre_ingresado = input(mensaje)
+
+        if re.match(patron, nombre_ingresado):
+            retorno = formalizar_nombre_completo(nombre_ingresado)
+            break
+        else:
+            print(mensaje_de_error)            
+    return retorno
+
+def formalizar_nombre_completo(nombre_completo:str) -> str:
+    """
+    """
+    nombre_completo = nombre_completo.lower()
+
+    nombres_aux = nombre_completo.split(" ")
+
+    nombre_completo_aux = []
+    # nombre_completo_aux = [nombres_aux.capitalize() for nombres_aux in nombres_aux]
+    for nombre_aux in nombres_aux:
+
+        nombre_completo_aux.append(nombre_aux.capitalize())
+
+    nombre_formalizado = " ".join(nombre_completo_aux)
+
+    return nombre_formalizado
+
+def encontrar_jugador_por_nombre(lista:list, nombre_a_buscar:str) -> dict:
+    """
+    """
+    retorno = {}
+
+    print(nombre_a_buscar)
+
+    if len(lista) > 0:
+        for jugador in lista:
+            if jugador['nombre'] == nombre_a_buscar:
+                retorno = jugador
+                print("RETORNO",retorno)
+                break
+    else:
+        print("\nERROR! No hay elementos cargados en la lista como para buscar un jugador.")
+
+    return retorno
+
+def mostrar_logros_un_jugador(jugador:dict) -> int:
+    retorno = -1
+
+    if jugador != {}:
+        print(f"\n ***** Todos los logros de {jugador['nombre']} *****")
+        for logro in jugador['logros']:
+            print(f"{logro}")
+        retorno = 1
+    else:
+        print("ERROR! No se han encontrado logros del jugador indicado.")
+        retorno = 0
+    
+    return retorno
+
+def calcular_promedio(lista:list) -> float:
+    retorno = -1
+
+    if len(lista) > 0:
+        acumulador = 0
+        for jugador in lista:
+            acumulador = acumulador + jugador['estadisticas']['promedio_puntos_por_partido']
+        promedio = round(float(acumulador/len(lista)), 2)
+        retorno = promedio
+    else:
+        print("ERROR! No hay datos en la lista como para realizar un promedio.")
+        retorno = 0
+
     return retorno
