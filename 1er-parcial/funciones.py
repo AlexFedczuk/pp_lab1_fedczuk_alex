@@ -363,13 +363,10 @@ def encontrar_jugador_por_nombre(lista:list, nombre_a_buscar:str) -> dict:
     """
     retorno = {}
 
-    print(nombre_a_buscar)
-
     if len(lista) > 0:
         for jugador in lista:
             if jugador['nombre'] == nombre_a_buscar:
                 retorno = jugador
-                print("RETORNO",retorno)
                 break
     else:
         print("\nERROR! No hay elementos cargados en la lista como para buscar un jugador.")
@@ -402,5 +399,44 @@ def calcular_promedio(lista:list) -> float:
     else:
         print("ERROR! No hay datos en la lista como para realizar un promedio.")
         retorno = 0
+
+    return retorno
+
+def comprobar_logro_en_un_jugador(jugador:dict, palabra_clave:str) -> bool:
+    palabra_clave = "Salon de la Fama del Baloncesto"
+
+    for logros in jugador["logros"]:
+        if palabra_clave.lower() in logros.lower():
+            retorno = True
+            break
+        else:
+            retorno = False
+    return retorno
+
+def encontrar_jugador_por_mayor_valor(lista:list, clave:str) -> dict:
+    retorno = {}
+
+    if len(lista) > 0:
+        jugador_maximo = calcular_jugador_con_mayor_valor(lista, clave)
+        retorno = jugador_maximo
+    else:
+        print(f"ERROR! No hay datos en la lista como para encontrar un jugador por {clave}.")
+
+    return retorno
+
+def calcular_jugador_con_mayor_valor(lista:list, clave:str) -> dict:
+    retorno = {}
+    jugador_maximo = {}
+    bandera = 0
+
+    if len(lista) > 0:
+        for jugador in lista:
+            if bandera == 0 or jugador_maximo['estadisticas'][clave] < jugador['estadisticas'][clave]:
+                jugador_maximo = jugador
+                bandera = 1
+    else:
+        print(f"ERROR! No hay datos en la lista como para encontrar un jugador por {clave}.")
+
+    retorno = jugador_maximo
 
     return retorno

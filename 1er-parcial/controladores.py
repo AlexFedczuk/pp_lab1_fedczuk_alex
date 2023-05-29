@@ -75,3 +75,69 @@ def controlador_opcion_cinco(lista:list) -> int:
         retorno = 0
 
     return retorno
+
+def controlador_opcion_seis(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        nombre_ingresado = pedir_un_nombre_regex("\nIngrese el nombre del jugador que quiere buscar: ",
+                                                 "\nERROR! Ha ingresado un valor invalido. Ingrese caracteres alfabeticos.")
+        palabra_clave = "Salon de la Fama del Baloncesto"
+        jugador_encontrado = encontrar_jugador_por_nombre(lista, nombre_ingresado)
+        if comprobar_logro_en_un_jugador(jugador_encontrado, palabra_clave):
+            print(f"\nEl jugador {jugador_encontrado['nombre']} es perteneciente al {palabra_clave}.")
+        else:
+            print(f"\nEl jugador {jugador_encontrado['nombre']} no es perteneciente al {palabra_clave}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_siete(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'rebotes_totales')
+        print(f"\nEl jugador con la mayor cantidad de rebotes totales es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['rebotes_totales']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_ocho(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'porcentaje_tiros_de_campo')
+        print(f"\nEl jugador con el mayor porcentaje de tiros de campo es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['porcentaje_tiros_de_campo']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_nueve(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'asistencias_totales')
+        print(f"\nEl jugador con la mayor cantidad de asistencias totales es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['asistencias_totales']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno

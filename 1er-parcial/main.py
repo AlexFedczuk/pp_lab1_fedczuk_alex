@@ -1,8 +1,11 @@
 from funciones import *
 from controladores import *
 
+# Ubicacion del archivo en mi PC: C:/Users/Alex Yago Fedczuk/Desktop/1er-parcial/dt.json
+# Ubicacion del archivo JSON en mi notebook: C:/Users/afedczuk/OneDrive - indecok/Escritorio/pp_lab1_fedczuk_alex/1er-parcial/dt.json
+ubicacion_archivo_dt_json = "C:/Users/afedczuk/OneDrive - indecok/Escritorio/pp_lab1_fedczuk_alex/1er-parcial/dt.json"
+
 mensaje_de_desarollo = "Esta opcion esta en desarrollo..."
-ubicacion_archivo_dt_json = "C:/Users/Alex Yago Fedczuk/Desktop/1er-parcial/dt.json"
 
 lista_dt = cargar_lista_json(ubicacion_archivo_dt_json)
 lista_jugadores = lista_dt['jugadores']
@@ -23,13 +26,13 @@ while True:
     elif opcion_de_menu_ingresada == 5:
         controlador_opcion_cinco(lista_jugadores)
     elif opcion_de_menu_ingresada == 6:
-        print(mensaje_de_desarollo)
+        controlador_opcion_seis(lista_jugadores)
     elif opcion_de_menu_ingresada == 7:
-        print(mensaje_de_desarollo)
+        controlador_opcion_siete(lista_jugadores)
     elif opcion_de_menu_ingresada == 8:
-        print(mensaje_de_desarollo)
+        controlador_opcion_ocho(lista_jugadores)
     elif opcion_de_menu_ingresada == 9:
-        print(mensaje_de_desarollo)
+        controlador_opcion_nueve(lista_jugadores)
     elif opcion_de_menu_ingresada == 10:
         print(mensaje_de_desarollo)
     elif opcion_de_menu_ingresada == 11:
