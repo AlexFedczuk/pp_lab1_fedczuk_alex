@@ -169,7 +169,6 @@ def listar_nombres_jugadores(lista:list) -> int:
     retorno = -1
 
     if len(lista) > 0:
-        print("\n***** Lista de todos los jugadores del Dream Team *****\nNombre Jugador\n--------------")
         for jugador in lista:
             print(f"{jugador['nombre']}")
     else:
@@ -439,4 +438,53 @@ def calcular_jugador_con_mayor_valor(lista:list, clave:str) -> dict:
 
     retorno = jugador_maximo
 
+    return retorno
+
+def pedir_un_numero_flotante_regex(mensaje:str, mensaje_error:str) -> float:
+    """
+    """
+    while True:
+        valor_ingresado = input(mensaje)
+        if validar_numero_flotante(valor_ingresado):
+            retorno = float(valor_ingresado)
+            break
+        else:
+            print(mensaje_error)
+    return retorno
+
+def validar_numero_flotante(cadena:str) -> bool:
+    """
+    """
+    patron = r"^-?\d+(\.\d+)?$"
+
+    if re.match(patron, cadena):
+        retorno = True
+    else:
+        retorno = False
+    return retorno
+
+def encontrar_jugadores_por_mayor_valor(lista:list, clave:str, valor:float or int) -> list:
+    """
+    """
+    retorno = []
+    lista_aux = []
+
+    if len(lista) > 0:
+        # calcular_jugador_con_mayor_valor(lista:list, clave:str)
+        for jugador in lista:
+            if comprobar_valor_mayor_a_otro(jugador['estadisticas'][clave], valor):
+                lista_aux.append(jugador)
+        retorno = lista_aux
+    else:
+        print(f"ERROR! No hay datos en la lista como para encontrar jugadores con {clave}.")
+
+    return retorno
+
+def comprobar_valor_mayor_a_otro(valor_uno, valor_dos) -> bool:
+    """
+    """
+    retorno = False
+
+    if valor_uno > valor_dos:
+        retorno = True
     return retorno

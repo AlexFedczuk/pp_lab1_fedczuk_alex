@@ -5,7 +5,7 @@ from controladores import *
 # Ubicacion del archivo JSON en mi notebook: C:/Users/afedczuk/OneDrive - indecok/Escritorio/pp_lab1_fedczuk_alex/1er-parcial/dt.json
 ubicacion_archivo_dt_json = "C:/Users/afedczuk/OneDrive - indecok/Escritorio/pp_lab1_fedczuk_alex/1er-parcial/dt.json"
 
-mensaje_de_desarollo = "Esta opcion esta en desarrollo..."
+mensaje_de_desarollo = "\nEsta opcion esta en desarrollo..."
 
 lista_dt = cargar_lista_json(ubicacion_archivo_dt_json)
 lista_jugadores = lista_dt['jugadores']
@@ -34,11 +34,11 @@ while True:
     elif opcion_de_menu_ingresada == 9:
         controlador_opcion_nueve(lista_jugadores)
     elif opcion_de_menu_ingresada == 10:
-        print(mensaje_de_desarollo)
+        controlador_opcion_diez(lista_jugadores)
     elif opcion_de_menu_ingresada == 11:
-        print(mensaje_de_desarollo)
+        controlador_opcion_once(lista_jugadores)
     elif opcion_de_menu_ingresada == 12:
-        print(mensaje_de_desarollo)
+        controlador_opcion_doce(lista_jugadores)
     elif opcion_de_menu_ingresada == 13:
         print(mensaje_de_desarollo)
     elif opcion_de_menu_ingresada == 14:

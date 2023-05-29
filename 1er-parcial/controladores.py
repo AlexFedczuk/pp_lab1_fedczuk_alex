@@ -7,6 +7,7 @@ def controlador_opcion_uno(lista:list) -> int:
     retorno = -1
 
     if len(lista) > 0:
+        print("\n***** Lista de todos los jugadores del Dream Team *****\nNombre Jugador\n--------------")
         listar_nombres_jugadores_con_posiciones(lista)
         retorno = 1
     else:
@@ -135,6 +136,57 @@ def controlador_opcion_nueve(lista:list) -> int:
     if len(lista) > 0:
         jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'asistencias_totales')
         print(f"\nEl jugador con la mayor cantidad de asistencias totales es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['asistencias_totales']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_diez(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        valor_ingresado = pedir_un_numero_flotante_regex("\nIngrese un valor: ", "ERROR! Ha ingresado un valor invalido.")
+        lista_jugadores_encontrados = encontrar_jugadores_por_mayor_valor(lista, 'promedio_puntos_por_partido', valor_ingresado)
+        print(f"\n***** Los jugadores que han promediado más puntos por partido que el valor ingresado: ({valor_ingresado}) *****")
+        listar_nombres_jugadores(lista_jugadores_encontrados)
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_once(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        valor_ingresado = pedir_un_numero_flotante_regex("\nIngrese un valor: ", "ERROR! Ha ingresado un valor invalido.")
+        lista_jugadores_encontrados = encontrar_jugadores_por_mayor_valor(lista, 'promedio_rebotes_por_partido', valor_ingresado)
+        print(f"\n***** Los jugadores que han promediado más rebotes por partido que el valor ingresado: ({valor_ingresado}) *****")
+        listar_nombres_jugadores(lista_jugadores_encontrados)
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_doce(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        valor_ingresado = pedir_un_numero_flotante_regex("\nIngrese un valor: ", "ERROR! Ha ingresado un valor invalido.")
+        lista_jugadores_encontrados = encontrar_jugadores_por_mayor_valor(lista, 'promedio_asistencias_por_partido', valor_ingresado)
+        print(f"\n***** Los jugadores que han promediado más asistencias por partido que el valo ingresado ({valor_ingresado}) *****")
+        listar_nombres_jugadores(lista_jugadores_encontrados)
         retorno = 1
     else:
         print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
