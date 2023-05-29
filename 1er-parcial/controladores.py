@@ -193,3 +193,33 @@ def controlador_opcion_doce(lista:list) -> int:
         retorno = 0
 
     return retorno
+
+def controlador_opcion_trece(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'robos_totales')
+        print(f"\nEl jugador con la mayor cantidad de robos totales es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['robos_totales']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_catorce(lista:list) -> int:
+    """
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'bloqueos_totales')
+        print(f"\nEl jugador con la mayor cantidad de bloqueos totales es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['bloqueos_totales']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
