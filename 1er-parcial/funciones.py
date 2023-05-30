@@ -4,6 +4,15 @@ import csv
 
 def mostrar_menu_principal():
     """
+        Muestra las opciones del menu principal.
+
+        Parametros
+        ----------
+        void
+        
+        Returns
+        -------
+        void
     """
     print("\n ---------- Menú Principal del 'Dream Team' ----------\n")
     print("1. Mostrar la lista de todos los jugadores del Dream Team.")
@@ -31,14 +40,26 @@ def mostrar_menu_principal():
 
 def cargar_lista_json(nombre_archivo_json:str) -> list:
     """
+        Se encarga de cargar toda la informacion que esta en el archivo json en una lista.
+
+        Parametros
+        ----------
+        nombre_archivo_json : str
+            El nombre del archivo json a cargar.
+        
+        Returns
+        -------
+        tipo : list
+            Devuelve una lista vacia en caso de que no se haya podido cargar la lista.
+            En el caso de que se ya haya realizado con exito la funcion, devuelve una lista caragda.
     """
     with open(nombre_archivo_json) as archivo:
         lista_cargada = json.load(archivo)
     return lista_cargada
 
-def formatear_datos_lista(lista:list) -> list:
-    """
-    """
+"""def formatear_datos_lista(lista:list) -> list:
+    
+    
     lista_retorno = []
 
     print("len: ", len(lista))
@@ -51,11 +72,11 @@ def formatear_datos_lista(lista:list) -> list:
         print("contador: ", contador)
         if contador == len(lista): 
             break"""
-    return lista_retorno
+    return lista_retorno"""
 
-def formatear_datos_item(item:dict) -> dict:
-    """
-    """
+"""def formatear_datos_item(item:dict) -> dict:
+    
+    
     diccionario_retorno = {}
     diccionario_aux = item
 
@@ -73,10 +94,19 @@ def formatear_datos_item(item:dict) -> dict:
             print("Error!")
 
     diccionario_retorno = diccionario_aux
-    return diccionario_retorno
+    return diccionario_retorno"""
 
 def pedir_un_numero_entero(mensaje:str) -> int:
     """
+        Pide un numero de tipo int al usuario y lo valida.
+
+        Parametros:
+        mensaje:str
+            El mensaje para instruir al usuario.
+        
+        Returns:
+        tipo : int
+            El valor ingresado por el usuario validado.
     """
     numeros_decimales = ["1","2","3","4","5","6","7","8","9","0"]
     signos = ["+","-"]
@@ -118,6 +148,17 @@ def pedir_un_numero_entero(mensaje:str) -> int:
 
 def pedir_un_numero_entero_regex(mensaje:str, mensaje_error:str) -> int:
     """
+        Pide un numero de tipo entero usando expresiones regulares.
+
+        Parametros:
+        mensaje:str
+            El mensaje para instruir al usuario.
+        mensaje_error:str
+            El mensaje para instruir al usuario en caso de un error.
+        
+        Returns:
+        tipo : int
+            El valor ingresado por el usuario validado.
     """
     while True:
         data_ingresada = input(mensaje)
@@ -130,6 +171,19 @@ def pedir_un_numero_entero_regex(mensaje:str, mensaje_error:str) -> int:
     return retorno
 
 def contar_signos(cadena, signos):
+    """
+        Cuanta la cantidad de signos que hay en una cadena.
+
+        Parametros:
+        cadena:str
+            La cadena a analizar.
+        signos:list
+            Los 'signos' a contar en la cadena.
+        
+        Returns:
+        tipo : int
+            Devuelve la cantidad de signos encontrados en la cadena.
+    """
     contador_de_signos = 0
 
     for caracter in cadena:
@@ -139,12 +193,20 @@ def contar_signos(cadena, signos):
 
 def validar_numero_entero(cadena:str) -> bool:
     """
-    El patrón verifica si la cadena comienza opcionalmente con un signo "-",
+        Valida si la cadena pasada por parametros representa un numero entero.
+
+        Parametros:
+        cadena:str
+            La cadena a validar.
+        
+        Returns:
+        tipo : bool
+            Devuelve True en el caso que la cadena represente un numero entero, False en el caso de que no.
+    """
+    patron = r"^-?\d+$" """El patrón verifica si la cadena comienza opcionalmente con un signo "-",
     seguido de uno o más dígitos, y no contiene ningún otro carácter antes
     o después del número. Si la cadena coincide con este patrón, se
-    considera un número entero válido.
-    """
-    patron = r"^-?\d+$"
+    considera un número entero válido."""
 
     if re.match(patron, cadena):
         retorno = True
@@ -154,6 +216,15 @@ def validar_numero_entero(cadena:str) -> bool:
 
 def validar_numero_flotante(cadena:str) -> bool:
     """
+        Valida si la cadena pasada por parametros representa un numero flotante.
+
+        Parametros:
+        cadena:str
+            La cadena a validar.
+        
+        Returns:
+        tipo : bool
+            Devuelve True en el caso que la cadena represente un numero flotante, False en el caso de que no.
     """
     patron = r"^-?\d+(\.\d+)?$"
 
@@ -165,6 +236,15 @@ def validar_numero_flotante(cadena:str) -> bool:
 
 def listar_nombres_jugadores(lista:list) -> int:
     """
+        Lista todos los nombres de una lista. 
+
+        Parametros:
+        lista : list
+            La lista con los nombres a listar.
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -178,6 +258,15 @@ def listar_nombres_jugadores(lista:list) -> int:
 
 def listar_nombres_jugadores_con_posiciones(lista:list) -> int:
     """
+        Lista todos los nombres de los jugadores del Dream Team con sus posiciones. 
+
+        Parametros:
+        lista : list
+            La lista con los nombres a listar con sus posiciones.
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -192,6 +281,15 @@ def listar_nombres_jugadores_con_posiciones(lista:list) -> int:
 
 def listar_nombres_jugadores_con_indice(lista:list) -> int:
     """
+        Lista todos los nombres de los jugadores del Dream Team con sus indices correspondientes. 
+
+        Parametros:
+        lista : list
+            La lista con los nombres a listar con sus indices.
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
     contador = 0
@@ -208,6 +306,15 @@ def listar_nombres_jugadores_con_indice(lista:list) -> int:
 
 def pedir_indice_jugador(lista:list) -> int:
     """
+        Pide al usuario que ingrese por la terminal el indice de un jugador del DT. 
+
+        Parametros:
+        lista : list
+            La lista con los jugadores del DT.
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si algo salio mal, el indice del jugador si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -226,6 +333,18 @@ def pedir_indice_jugador(lista:list) -> int:
 
 def encontrar_jugador_por_indice(lista:list, indice_a_buscar:int) -> dict:
     """
+        Busca en la lista de jugadores del DT por un indice ingresado por parametros. 
+
+        Parametros:
+        lista:list
+            La lista con los jugadores del DT.
+        indice_a_buscar:int
+            El indice del jugador a buscar.
+        
+        Returns:
+        tipo : int
+            Retorna un diccionario vacio si algo salio mal, el diccionario del jugador
+            en el caso que se haya realizado la tarea con exito.
     """
     retorno = {}
     contador = 0
@@ -245,6 +364,17 @@ def encontrar_jugador_por_indice(lista:list, indice_a_buscar:int) -> dict:
         
 
 def mostrar_estadisticas_completas_un_jugador(jugador:dict) -> int:
+    """
+        Muestar todas las estadisticas del jugador ingresado por parametros.
+
+        Parametros:
+        jugador:dict
+            El jugador a mostrar sus estadisticas.
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si salio algo mal, (0) si el diccionario esta vacio (1) si se pudo realizar la tarea con exito.
+    """
     retorno = -1
 
     print(f"\n ***** Estadisticas completas de {jugador['nombre']} *****")
@@ -264,6 +394,17 @@ def mostrar_estadisticas_completas_un_jugador(jugador:dict) -> int:
     return retorno
 
 def generar_archivo_csv(jugador:dict) -> int:
+    """
+        Genera un archivo tipo csv con toda las estadisticas de un jugar del DT.
+
+        Parametros:
+        jugador:dict
+            El jugador a guardar sus estadisticas estadisticas.
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si salio algo mal, (1) en el caso que se haya podido generar el archivo con exito.
+    """
     retorno = -1
 
     if jugador != {}:
@@ -310,9 +451,9 @@ def generar_archivo_csv(jugador:dict) -> int:
         retorno = 0
     return retorno
 
-def pedir_un_nombre(mensaje:str, mensaje_de_error:str) -> str:
-    """
-    """
+"""def pedir_un_nombre(mensaje:str, mensaje_de_error:str) -> str:
+    
+    
     while True:
         nombre_ingresado = input(mensaje)
 
@@ -322,10 +463,21 @@ def pedir_un_nombre(mensaje:str, mensaje_de_error:str) -> str:
             nombre_ingresado = nombre_ingresado.lower()
             nombre_ingresado = nombre_ingresado.capitalize()
             break
-    return nombre_ingresado
+    return nombre_ingresado"""
 
 def pedir_un_nombre_regex(mensaje:str, mensaje_de_error:str) -> str:
     """
+        Pide un numero nombre al usuario por la terminal.
+
+        Parametros:
+        mensaje:str
+            El mensaje para instruir al usuario.
+        mensaje_error:str
+            El mensaje para instruir al usuario en caso de un error.
+        
+        Returns:
+        tipo : int
+            Retorna una variable tipo string vacia si sale algo mal, retorna una cadena con un nombre en el cas oque este bien validado.
     """
     patron = r"^[A-Za-z\s]+$"
     retorno = ""
@@ -342,6 +494,15 @@ def pedir_un_nombre_regex(mensaje:str, mensaje_de_error:str) -> str:
 
 def formalizar_nombre_completo(nombre_completo:str) -> str:
     """
+        Formaliza el nombre completo ingresado por parametros.
+
+        Parametros:
+        nombre_completo:str
+            El nombre a formalizar.
+        
+        Returns:
+        tipo : int
+            Retorna el nombre formalizado.
     """
     nombre_completo = nombre_completo.lower()
 
@@ -359,6 +520,18 @@ def formalizar_nombre_completo(nombre_completo:str) -> str:
 
 def encontrar_jugador_por_nombre(lista:list, nombre_a_buscar:str) -> dict:
     """
+        Busca en la lista de jugadores del DT por un nombre ingresado por parametros. 
+
+        Parametros:
+        lista:list
+            La lista con los jugadores del DT.
+        nombre_a_buscar:str
+            El nombre del jugador a buscar.
+        
+        Returns:
+        tipo : int
+            Retorna un diccionario vacio si algo salio mal, el diccionario del jugador
+            en el caso que se haya realizado la tarea con exito.
     """
     retorno = {}
 
@@ -373,6 +546,17 @@ def encontrar_jugador_por_nombre(lista:list, nombre_a_buscar:str) -> dict:
     return retorno
 
 def mostrar_logros_un_jugador(jugador:dict) -> int:
+    """
+        Muestar todos los logros del jugador ingresado por parametros.
+
+        Parametros:
+        jugador:dict
+            El jugador a mostrar sus logros.
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si salio algo mal, (0) si el diccionario esta vacio (1) si se pudo realizar la tarea con exito.
+    """
     retorno = -1
 
     if jugador != {}:
@@ -387,6 +571,19 @@ def mostrar_logros_un_jugador(jugador:dict) -> int:
     return retorno
 
 def calcular_promedio(lista:list) -> float:
+    """
+        Calcula el promedio de un total de una estadistica indicada por una clave por parametros.
+
+        Parametros:
+        lista : list
+            La lista con los datos necesarios para calcular un promedio.
+        clave:str
+            La clave que indica de que estadistica hay que calcular el promedio.
+        
+        Returns:
+        tipo : float
+            Devuelve el promedio calculado.
+    """
     retorno = -1
 
     if len(lista) > 0:
@@ -402,8 +599,19 @@ def calcular_promedio(lista:list) -> float:
     return retorno
 
 def comprobar_logro_en_un_jugador(jugador:dict, palabra_clave:str) -> bool:
-    palabra_clave = "Salon de la Fama del Baloncesto"
+    """
+        Comprueba si el jugador del DT tiene x logro usando una palabra o frase clave.
 
+        Parametros:
+        jugador:dict
+            El jugador a analizar.
+        palabra_clave:str
+            Palabra clave para chequear en sus logros.
+
+        Returns:
+        tipo : bool
+            Deveulve True en el caso que se compruebe que el jugador tiene x logro indicado, False en el caso que no
+    """
     for logros in jugador["logros"]:
         if palabra_clave.lower() in logros.lower():
             retorno = True
@@ -413,6 +621,20 @@ def comprobar_logro_en_un_jugador(jugador:dict, palabra_clave:str) -> bool:
     return retorno
 
 def encontrar_jugador_por_mayor_valor(lista:list, clave:str) -> dict:
+    """
+        Busca al jugador con el valor mas alto de la estadistica indicada por una clave.
+
+        Parametros:
+        lista:list
+            La lista con los jugadores el DT.
+        clave:str
+            La estadistica indicada a por clave.
+        
+        Returns:
+        tipo : int
+            Devuelve el jugador encontrado mediante un diccionarion en el caso que no
+            se haya podido encontrar devuleve un diccionario vacio.
+    """
     retorno = {}
 
     if len(lista) > 0:
@@ -424,6 +646,20 @@ def encontrar_jugador_por_mayor_valor(lista:list, clave:str) -> dict:
     return retorno
 
 def calcular_jugador_con_mayor_valor(lista:list, clave:str) -> dict:
+    """
+        Calcula cual es el jugador con el valor mas alto de la estadistica indicada por una clave.
+
+        Parametros:
+        lista:list
+            La lista con los jugadores el DT.
+        clave:str
+            La estadistica indicada a por clave.
+        
+        Returns:
+        tipo : int
+            Devuelve el jugador calculado con el valor mas alto, en el caso que no
+            se haya podido calcular devuleve un diccionario vacio.
+    """
     retorno = {}
     jugador_maximo = {}
     bandera = 0
@@ -442,6 +678,17 @@ def calcular_jugador_con_mayor_valor(lista:list, clave:str) -> dict:
 
 def pedir_un_numero_flotante_regex(mensaje:str, mensaje_error:str) -> float:
     """
+        Pide un numero de tipo flotante usando expresiones regulares.
+
+        Parametros:
+        mensaje:str
+            El mensaje para instruir al usuario.
+        mensaje_error:str
+            El mensaje para instruir al usuario en caso de un error.
+        
+        Returns:
+        tipo : int
+            El valor ingresado por el usuario validado.
     """
     while True:
         valor_ingresado = input(mensaje)
@@ -454,6 +701,15 @@ def pedir_un_numero_flotante_regex(mensaje:str, mensaje_error:str) -> float:
 
 def validar_numero_flotante(cadena:str) -> bool:
     """
+        Valida si la cadena pasada por parametros representa un numero flotante.
+
+        Parametros:
+        cadena:str
+            La cadena a validar.
+        
+        Returns:
+        tipo : bool
+            Devuelve True en el caso que la cadena represente un numero flotante, False en el caso de que no.
     """
     patron = r"^-?\d+(\.\d+)?$"
 
@@ -465,6 +721,21 @@ def validar_numero_flotante(cadena:str) -> bool:
 
 def encontrar_jugadores_por_mayor_valor(lista:list, clave:str, valor:float or int) -> list:
     """
+        Busca en la lista de jugadores del DT, por una clave estadistica y valor indicado 
+        ingresados por parametros, los jugadores que la superen. 
+
+        Parametros:
+        lista:list
+            La lista con los jugadores del DT.
+        clave:str
+            La clave estadistica utilizada para realizar la busqueda.
+        valor:float or int
+            El valor utilizado para realizar la busqueda.
+
+        Returns:
+        tipo : int
+            Retorna una lista de lus jugadores que superen ese valor, en el caso que no 
+            se haya podido realizar con exito, se devuelve una lista vacia.
     """
     retorno = []
     lista_aux = []
@@ -482,6 +753,17 @@ def encontrar_jugadores_por_mayor_valor(lista:list, clave:str, valor:float or in
 
 def comprobar_valor_mayor_a_otro(valor_uno, valor_dos) -> bool:
     """
+        Comprueba si el primer valor es mayor al segundo.
+
+        Parametros:
+        valor_uno:int or float
+            Primer valor.        
+        valor_dos:int or float
+            Segundo valor.
+        
+        Returns:
+        tipo : bool
+            Devuelve True en el caso que el primer valor sea mayor que el segundo, de lo contrario False.
     """
     retorno = False
 
@@ -491,6 +773,19 @@ def comprobar_valor_mayor_a_otro(valor_uno, valor_dos) -> bool:
 
 def calcular_promedio_excluyendo(lista:list, jugador_excluido:dict) -> float:
     """
+        Calcula el promedio de un total de una estadistica indicada por una clave por parametros, excluyendo a un jugador.
+
+        Parametros:
+        lista : list
+            La lista con los datos necesarios para calcular un promedio.
+        clave:float or int
+            La clave que indica de que estadistica hay que calcular el promedio.
+        jugador_excluido:dict
+            El jugador que hay que evitar en el calculo.
+        
+        Returns:
+        tipo : float
+            Devuelve el promedio calculado.
     """
     retorno = -1
 
@@ -508,7 +803,19 @@ def calcular_promedio_excluyendo(lista:list, jugador_excluido:dict) -> float:
     return retorno
 
 def calcular_jugador_con_menor_valor(lista:list, clave:str) -> dict:
-    """"
+    """
+        Calcula cual es el jugador con el valor mas bajo de la estadistica indicada por una clave.
+
+        Parametros:
+        lista:list
+            La lista con los jugadores el DT.
+        clave:str
+            La estadistica indicada a por clave.
+        
+        Returns:
+        tipo : int
+            Devuelve el jugador calculado con el valor mas bajo, en el caso que no
+            se haya podido calcular devuleve un diccionario vacio.
     """
     retorno = {}
     jugador_menor = {}
@@ -528,6 +835,16 @@ def calcular_jugador_con_menor_valor(lista:list, clave:str) -> dict:
 
 def encontrar_jugador_mayores_logros(lista:list) -> dict:
     """
+        Busca en la lista con los mayores logros. 
+
+        Parametros:
+        lista:list
+            La lista con los jugadores del DT.
+        
+        Returns:
+        tipo : int
+            Retorna un diccionario vacio si algo salio mal, el diccionario del jugador
+            en el caso que se haya realizado la tarea con exito.
     """
     retorno = {}
     bandera = 0
@@ -545,6 +862,15 @@ def encontrar_jugador_mayores_logros(lista:list) -> dict:
 
 def contar_logros_un_jugador(jugador:dict) -> int:
     """
+        Cuenta la cantidad de logros que tiene un jugador del DT. 
+
+        Parametros:
+        jugador:dict
+            El jugador del DT a analizar.
+        
+        Returns:
+        tipo : int
+            Retorna (-1) si algo salio mal, devuleve la cantidad de logros si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -556,6 +882,15 @@ def contar_logros_un_jugador(jugador:dict) -> int:
 
 def contar_cantidad_logros_un_jugador(jugador:dict) -> int:
     """
+        Cuenta la cantidad de logros que tiene un jugador del DT y cuantas veces lo gano. 
+
+        Parametros:
+        jugador:dict
+            El jugador del DT a analizar.
+        
+        Returns:
+        tipo : int
+            Retorna (-1) si algo salio mal, devuleve la cantidad de logros si se pudo realizar la tarea con exito.
     """
     retorno = -1
     cantidad_logros = []
@@ -570,7 +905,17 @@ def contar_cantidad_logros_un_jugador(jugador:dict) -> int:
 
 def identificar_numero_entero(cadena:str) -> int:
     """
-    """    
+        Identifica numeros enteros en una cadena de caracteres.
+
+        Parametros:
+        cadena:str
+            La cadena a analizar.
+        
+        Returns:
+        tipo : int
+            Retorna el numero entero que haya encontrado en la cadena o (1) 
+            en el caso que ningun numero entero haya sido encontrado.
+    """      
     retorno = -1
     patron = r'\d+'
     resultado = re.match(patron, cadena)
@@ -583,6 +928,15 @@ def identificar_numero_entero(cadena:str) -> int:
 
 def sumar_enteros_en_lista(lista:list) -> int:
     """
+        Suma todos los valores que hay en una lista de numeros enteros.
+
+        Parametros:
+        lista:list
+            La lista a usar para sumar.
+        
+        Returns:
+        tipo : int
+            Devuelve el valor calculado en la suma total de todos los valore de la lista.
     """
     acumulador = 0
     if len(lista) > 0:
