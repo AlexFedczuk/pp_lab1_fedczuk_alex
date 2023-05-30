@@ -16,7 +16,7 @@ def controlador_opcion_uno(lista:list) -> int:
     retorno = -1
 
     if len(lista) > 0:
-        print("\n***** Lista de todos los jugadores del Dream Team *****\nNombre Jugador\n--------------")
+        print("\n***** Lista de todos los jugadores del Dream Team *****\nNombre Jugador - Posicion\n--------------")
         listar_nombres_jugadores_con_posiciones(lista)
         retorno = 1
     else:
@@ -492,6 +492,33 @@ def controlador_opcion_diecinueve(lista:list) -> int:
     if len(lista) > 0:
         jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'temporadas')
         print(f"\nEl jugador con la mayor cantidad de temporadas jugadas es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['temporadas']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_veinte(lista:list) -> int:
+    """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 19 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        lista_ordenada = ordenar_lista(lista, 'porcentaje_tiros_de_campo')
+        print("\n***** Lista ordenada por posición en la cancha, que hayan tenido un porcentaje de tiros de campo superior a ese valor *****")
+        print("\nNombre Jugador - Posicion - Porcentaje de Tiros de Campo")
+        
+        listar_jugadores_mas_dos_estadistica(lista_ordenada, 'posicion', 'porcentaje_tiros_de_campo')
         retorno = 1
     else:
         print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")

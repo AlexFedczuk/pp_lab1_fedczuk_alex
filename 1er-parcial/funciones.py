@@ -268,7 +268,6 @@ def listar_nombres_jugadores_con_posiciones(lista:list) -> int:
     retorno = -1
 
     if len(lista) > 0:
-        print("\n***** Lista de todos los jugadores del Dream Team *****\nNombre Jugador - Posición\n-------------------------")
         for jugador in lista:
             print(f"{jugador['nombre']} - {jugador['posicion']}")
     else:
@@ -944,4 +943,85 @@ def sumar_enteros_en_lista(lista:list) -> int:
 
     return acumulador
 
+def ordenar_lista(lista:list, clave:str) -> list:
+    """
+        Ordena la lista de jugadores del DT por posicion y una estadistica indicada por una clave.
 
+        Parametros:
+        lista:list
+            La lista de los jugadores del DT.
+        clave:str
+            La clave estadistica indicada.
+        
+        Returns:
+        tipo : list
+            Devuelve una lista ordenada o la lista como se paso originalemnte en el caso que haya pasado algo malo.
+    """
+    lista_aux = lista
+    posiciones = ["Escolta","Base","Ala-Pivot","Alero","Pivot"]
+    lista_aux_dos = []
+
+    if len(lista_aux) > 0:        
+        for i in range(0, len(lista_aux) - 1):
+            if (lista_aux[i]['estadisticas'][clave] < lista_aux[i + 1]['estadisticas'][clave]):
+                jugador_aux = lista_aux[i]
+                lista_aux[i] = lista_aux[i + 1]
+                lista_aux[i + 1] = jugador_aux
+        for posicion in posiciones:
+            for i in range(0, len(lista_aux)):
+                if (lista_aux[i]['posicion'] == posicion):
+                    lista_aux_dos.append(lista_aux[i])
+    else:
+        print("ERROR! No se puede ordena una lista vacia.")
+
+    return lista_aux_dos
+
+def listar_jugadores_mas_estadistica(lista:list, clave:str) -> int:
+    """
+        Lista todos los nombres de los jugadores del Dream Team con una estadistica indicada. 
+
+        Parametros:
+        lista : list
+            La lista con los nombres a listar con sus posiciones.
+        clave:str
+            La clave indicando la estadistica a mostrar
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        for jugador in lista:
+            print(f"{jugador['nombre']} - {jugador['estadisticas'][clave]}")
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para mostrar.")
+        retorno = 0
+    return retorno
+
+def listar_jugadores_mas_dos_estadistica(lista:list, clave_uno:str, clave_dos:str) -> int:
+    """
+        Lista todos los nombres de los jugadores del Dream Team con dos estadisticas indicadas. 
+
+        Parametros:
+        lista : list
+            La lista con los nombres a listar con sus posiciones.
+        clave_uno:str
+            La clave indicada
+        clave_dos:str
+            La clave indicando la estadistica a mostrar
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        for jugador in lista:
+            print(f"{jugador['nombre']} - {jugador[clave_uno]} - {jugador['estadisticas'][clave_dos]}")
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para mostrar.")
+        retorno = 0
+    return retorno
