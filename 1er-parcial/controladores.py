@@ -3,6 +3,15 @@ from funciones import *
 
 def controlador_opcion_uno(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 1 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -18,6 +27,16 @@ def controlador_opcion_uno(lista:list) -> int:
 
 def controlador_opcion_dos(lista:list) -> dict:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 2 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un diccionario vacio ({}) si algo salio mal, un diccionario con la informacion
+            del jugador seleccionado en la opcion 2.
     """
     retorno = {}
 
@@ -34,6 +53,15 @@ def controlador_opcion_dos(lista:list) -> dict:
 
 def controlador_opcion_tres(jugador:dict) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 3 del menu principal.
+
+        Parametros:
+        jugador : dict
+            Un diccionario con la informacion del jugador seleccionado en la opcion 2.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1    
 
@@ -47,6 +75,15 @@ def controlador_opcion_tres(jugador:dict) -> int:
 
 def controlador_opcion_cuatro(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 4 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -64,6 +101,15 @@ def controlador_opcion_cuatro(lista:list) -> int:
 
 def controlador_opcion_cinco(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 5 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -79,6 +125,15 @@ def controlador_opcion_cinco(lista:list) -> int:
 
 def controlador_opcion_seis(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 6 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -100,6 +155,15 @@ def controlador_opcion_seis(lista:list) -> int:
 
 def controlador_opcion_siete(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 7 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -115,6 +179,15 @@ def controlador_opcion_siete(lista:list) -> int:
 
 def controlador_opcion_ocho(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 8 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -130,6 +203,15 @@ def controlador_opcion_ocho(lista:list) -> int:
 
 def controlador_opcion_nueve(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 9 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -145,6 +227,15 @@ def controlador_opcion_nueve(lista:list) -> int:
 
 def controlador_opcion_diez(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 10 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -162,6 +253,15 @@ def controlador_opcion_diez(lista:list) -> int:
 
 def controlador_opcion_once(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 11 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -179,6 +279,15 @@ def controlador_opcion_once(lista:list) -> int:
 
 def controlador_opcion_doce(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 12 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -195,7 +304,16 @@ def controlador_opcion_doce(lista:list) -> int:
     return retorno
 
 def controlador_opcion_trece(lista:list) -> int:
-    """
+   """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 13 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -211,6 +329,15 @@ def controlador_opcion_trece(lista:list) -> int:
 
 def controlador_opcion_catorce(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 14 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -226,6 +353,15 @@ def controlador_opcion_catorce(lista:list) -> int:
 
 def controlador_opcion_quince(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 15 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -243,6 +379,15 @@ def controlador_opcion_quince(lista:list) -> int:
 
 def controlador_opcion_dieciseis(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 16 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -258,6 +403,15 @@ def controlador_opcion_dieciseis(lista:list) -> int:
 
 def controlador_opcion_diecisiete(lista:list) -> int:
     """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 17 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
