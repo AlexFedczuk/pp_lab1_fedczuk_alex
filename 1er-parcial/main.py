@@ -50,7 +50,7 @@ while True:
     elif opcion_de_menu_ingresada == 17:
         controlador_opcion_diecisiete(lista_jugadores)
     elif opcion_de_menu_ingresada == 18:
-        print(mensaje_de_desarollo)
+        controlador_opcion_dieciocho(lista_jugadores)
     elif opcion_de_menu_ingresada == 19:
         print(mensaje_de_desarollo)
     elif opcion_de_menu_ingresada == 20:

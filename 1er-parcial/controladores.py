@@ -424,3 +424,77 @@ def controlador_opcion_diecisiete(lista:list) -> int:
         retorno = 0
 
     return retorno
+
+def controlador_opcion_dieciocho(lista:list) -> int:
+    """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 18 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        valor_ingresado = pedir_un_numero_flotante_regex("\nIngrese un valor: ", "ERROR! Ha ingresado un valor invalido.")
+        lista_jugadores_encontrados = encontrar_jugadores_por_mayor_valor(lista, 'porcentaje_tiros_triples', valor_ingresado)
+        print(f"\n***** Los jugadores que tienen un porcentaje de tiros triples superior al valo ingresado ({valor_ingresado}) *****")
+        listar_nombres_jugadores(lista_jugadores_encontrados)
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_diecinueve(lista:list) -> int:
+    """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 19 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_mayores_logros = encontrar_jugador_mayores_logros(lista)
+        print(f"\nEl jugador con la mayor cantidad de logros obtenidos es {jugador_mayores_logros['nombre']} con un total de {contar_cantidad_logros_un_jugador(jugador_mayores_logros)}")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
+
+def controlador_opcion_diecinueve(lista:list) -> int:
+    """
+        Se encarga de contener todas las funciones necesarias para 
+        realizar el algoritmo de la opcion 19 del menu principal.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
+    retorno = -1
+
+    if len(lista) > 0:
+        jugador_encontrado = encontrar_jugador_por_mayor_valor(lista, 'temporadas')
+        print(f"\nEl jugador con la mayor cantidad de temporadas jugadas es {jugador_encontrado['nombre']}, con un total de {jugador_encontrado['estadisticas']['temporadas']}.")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para realizar esta operacion.")
+        retorno = 0
+
+    return retorno
