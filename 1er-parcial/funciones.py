@@ -66,12 +66,12 @@ def cargar_lista_json(nombre_archivo_json:str) -> list:
 
     for item in lista:
         print(item)
-        """item_aux = formatear_datos_item(item)
+        item_aux = formatear_datos_item(item)
         lista.append(item_aux)
         contador+=1
         print("contador: ", contador)
         if contador == len(lista): 
-            break"""
+            break
     return lista_retorno"""
 
 """def formatear_datos_item(item:dict) -> dict:
@@ -203,10 +203,7 @@ def validar_numero_entero(cadena:str) -> bool:
         tipo : bool
             Devuelve True en el caso que la cadena represente un numero entero, False en el caso de que no.
     """
-    patron = r"^-?\d+$" """El patrón verifica si la cadena comienza opcionalmente con un signo "-",
-    seguido de uno o más dígitos, y no contiene ningún otro carácter antes
-    o después del número. Si la cadena coincide con este patrón, se
-    considera un número entero válido."""
+    patron = r"^-?\d+$"
 
     if re.match(patron, cadena):
         retorno = True

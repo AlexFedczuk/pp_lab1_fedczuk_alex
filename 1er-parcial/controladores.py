@@ -304,7 +304,7 @@ def controlador_opcion_doce(lista:list) -> int:
     return retorno
 
 def controlador_opcion_trece(lista:list) -> int:
-   """
+    """
         Se encarga de contener todas las funciones necesarias para 
         realizar el algoritmo de la opcion 13 del menu principal.
 
