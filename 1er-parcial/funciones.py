@@ -1110,6 +1110,16 @@ def determinar_el_mejor_jugador(lista:list) -> dict:
 
 
 def listar_jugadores_all_star(lista:list) -> int:
+    """
+        Muestra de forma ordenada los jugadores con mas All-Star.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
     retorno = -1
 
     if len(lista) > 0:
@@ -1126,6 +1136,16 @@ def listar_jugadores_all_star(lista:list) -> int:
     return retorno
 
 def encontrar_indice_un_logro(lista_logros:list) -> int:
+    """
+        Busca el indice de un logro dentro de la lista de logros
+
+        Parametros:
+        lista_logros : list
+            lista de logros
+        
+        Returns:
+        Retorna un numero entero (-1) si algo salio mal, el indice del logro si se pudo realizar la tarea con exito.
+    """
     retorno = -1
     contador = 0
 
@@ -1138,6 +1158,14 @@ def encontrar_indice_un_logro(lista_logros:list) -> int:
 
 def ordenar_jugadores_all_star(lista:list) -> list:
     """
+        Ordenada los jugadores con mas All-Star.
+
+        Parametros:
+        lista : list
+            Una lista de variables, en este caso serian jugadores del Dream Team.
+        
+        Returns:
+        Devuelve la lista ordenada.
     """
     lista_aux = []
     jugador_aux_ord = {}
