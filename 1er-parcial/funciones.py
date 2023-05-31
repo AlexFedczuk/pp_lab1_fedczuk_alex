@@ -36,6 +36,11 @@ def mostrar_menu_principal():
     print("19. Calcular y mostrar el jugador con la mayor cantidad de temporadas jugadas.")
     print("20. Mostrar los jugadores, ordenados por posición en la cancha, que hayan tenido un porcentaje de tiros de campo superior a X valor.")
     print("23. Calcular de cada jugador cuál es su posición en cada uno de los siguientes ranking: ● Puntos ● Rebotes ● Asistencias ● Robos.")
+    print(" ------------ CONSIGNAS EXTRA! ------------")
+    print("24. Determinar la cantidad de jugadores que hay por cada posición")
+    print("25. Mostrar la lista de jugadores ordenadas por la cantidad de All-Star de forma descendente")
+    print("26. Determinar qué jugador tiene las mejores estadísticas en cada valor.")
+    print("27. Determinar qué jugador tiene las mejores estadísticas de todos.")
     print("0. Salir del programa")
 
 def cargar_lista_json(nombre_archivo_json:str) -> list:
@@ -58,8 +63,6 @@ def cargar_lista_json(nombre_archivo_json:str) -> list:
     return lista_cargada
 
 """def formatear_datos_lista(lista:list) -> list:
-    
-    
     lista_retorno = []
 
     print("len: ", len(lista))
@@ -1025,3 +1028,128 @@ def listar_jugadores_mas_dos_estadistica(lista:list, clave_uno:str, clave_dos:st
         print("\nERROR! No hay elementos cargados en la lista para mostrar.")
         retorno = 0
     return retorno
+
+def guardar_nueva_lista_en_csv(lista:list, nombre_del_archivo:str) -> int:
+    """
+        Genera un archivo de tipo CSV con los puntos totales de cada jugador. 
+
+        Parametros:
+        lista : list
+            La lista con los nombres a listar con sus posiciones.
+        nombre_del_archivo:str
+            nombre del archivo
+        
+        Returns:
+        tipo : int
+            Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+    """
+    retorno = -1
+
+    if len(lista) > 0 and nombre_del_archivo != "":
+        titulos = ["Jugador","Puntos","Rebotes","Asistencias","Robos"]
+
+        with open(nombre_del_archivo, 'w', newline='') as archivo_csv:
+            escritor_csv = csv.writer(archivo_csv)
+            escritor_csv.writerow(titulos)
+            for jugador in lista:
+                lista_datos = [jugador['nombre'],
+                               jugador['estadisticas']['puntos_totales'],
+                               jugador['estadisticas']['rebotes_totales'],
+                               jugador['estadisticas']['asistencias_totales'],
+                               jugador['estadisticas']['robos_totales']]
+                escritor_csv.writerow(lista_datos)
+        print("\nEl archivo CSV se pudo generar con exito!")
+        retorno = 1
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para mostrar.")
+        retorno = 0
+    return retorno
+
+
+
+def contar_jugadores_por_posicion(lista:list, posicion:str) -> int:
+    retorno = -1
+    contador = 0
+
+    if len(lista) > 0:
+        for jugador in lista:
+            if jugador['posicion'] == posicion:
+                contador+=1
+        retorno = contador
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para contar por posicion.")
+
+    return retorno
+
+def determinar_el_mejor_jugador(lista:list) -> dict:
+    retorno = {}
+    mejor_jugador = {}
+
+    if len(lista) > 0:
+        for i in range(0, len(lista)):
+            if i == 0 or (mejor_jugador['estadisticas']['temporadas'] < lista[i]['estadisticas']['temporadas'] and 
+                          mejor_jugador['estadisticas']['puntos_totales'] < lista[i]['estadisticas']['puntos_totales'] and
+                          mejor_jugador['estadisticas']['promedio_puntos_por_partido'] < lista[i]['estadisticas']['promedio_puntos_por_partido'] and
+                          mejor_jugador['estadisticas']['rebotes_totales'] < lista[i]['estadisticas']['rebotes_totales'] and
+                          mejor_jugador['estadisticas']['promedio_rebotes_por_partido'] < lista[i]['estadisticas']['promedio_rebotes_por_partido'] and
+                          mejor_jugador['estadisticas']['asistencias_totales'] < lista[i]['estadisticas']['asistencias_totales'] and
+                          mejor_jugador['estadisticas']['promedio_asistencias_por_partido'] < lista[i]['estadisticas']['promedio_asistencias_por_partido'] and
+                          mejor_jugador['estadisticas']['robos_totales'] < lista[i]['estadisticas']['robos_totales'] and
+                          mejor_jugador['estadisticas']['bloqueos_totales'] < lista[i]['estadisticas']['bloqueos_totales'] and
+                          mejor_jugador['estadisticas']['porcentaje_tiros_de_campo'] < lista[i]['estadisticas']['porcentaje_tiros_de_campo'] and
+                          mejor_jugador['estadisticas']['porcentaje_tiros_libres'] < lista[i]['estadisticas']['porcentaje_tiros_libres'] and
+                          mejor_jugador['estadisticas']['porcentaje_tiros_triples'] < lista[i]['estadisticas']['porcentaje_tiros_triples']):
+                mejor_jugador = lista[i]
+        retorno = mejor_jugador
+    elif len(lista) == 1:
+        retorno = lista[0]
+    else:
+        print("\nERROR! No hay elementos cargados en la lista para contar por posicion.")
+
+    return retorno
+
+
+def listar_jugadores_all_star(lista:list) -> int:
+    retorno = -1
+
+    if len(lista) > 0:
+        lista_ordenada = ordenar_jugadores_all_star(lista)
+
+        print("************** lista de jugadores ordenadas por la cantidad de All-Star ****************")
+        for jugador in lista_ordenada:
+            print(f"{jugador['nombre']} {jugador['cantidad_all_star']} veces All Star")
+        retorno = 1   
+    else:
+        print("ERROR! N o se puede listar los jugadores con mayores All-Star, sa la lista esta vacia.")
+        retorno = 0
+
+    return retorno
+
+def encontrar_indice_un_logro(lista_logros:list) -> int:
+    retorno = -1
+    contador = 0
+
+    for logro in lista_logros:
+        if "All-Star" in logro:
+            retorno = contador
+            break
+        contador+=1
+    return retorno
+
+def ordenar_jugadores_all_star(lista:list) -> list:
+    """
+    """
+    lista_aux = []
+    jugador_aux_ord = {}
+
+    for jugador in lista:
+            if comprobar_logro_en_un_jugador(jugador, "All-Star"):
+                jugador_aux = {"nombre": jugador['nombre'], "cantidad_all_star": identificar_numero_entero(jugador['logros'][encontrar_indice_un_logro(jugador['logros'])])}
+                lista_aux.append(jugador_aux)        
+    for i in range(0, len(lista_aux)):
+        for j in range(0, len(lista_aux)):
+                    if lista_aux[i]['cantidad_all_star'] > lista_aux[j]['cantidad_all_star']:
+                        jugador_aux_ord = lista_aux[i]
+                        lista_aux[i] = lista_aux[j]
+                        lista_aux[j] = jugador_aux_ord
+    return lista_aux

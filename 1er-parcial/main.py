@@ -3,7 +3,7 @@ from controladores import *
 
 # Ubicacion del archivo en mi PC: C:/Users/Alex Yago Fedczuk/Desktop/1er-parcial/dt.json
 # Ubicacion del archivo JSON en mi notebook: C:/Users/afedczuk/OneDrive - indecok/Escritorio/pp_lab1_fedczuk_alex/1er-parcial/dt.json
-ubicacion_archivo_dt_json = "C:/Users/Alex Yago Fedczuk/Desktop/1er-parcial/dt.json"
+ubicacion_archivo_dt_json = "C:/Users/Alex Yago Fedczuk/Desktop/pp_lab1_fedczuk_alex/1er-parcial/dt.json"
 
 mensaje_de_desarollo = "\nEsta opcion esta en desarrollo..."
 
@@ -56,7 +56,15 @@ while True:
     elif opcion_de_menu_ingresada == 20:
         controlador_opcion_veinte(lista_jugadores)
     elif opcion_de_menu_ingresada == 23:
-        print(mensaje_de_desarollo)
+        controlador_opcion_veintitres(lista_jugadores)
+    elif opcion_de_menu_ingresada == 24:
+        controlador_opcion_veinticuatro(lista_jugadores)
+    elif opcion_de_menu_ingresada == 25:
+        controlador_opcion_veinticinco(lista_jugadores)
+    elif opcion_de_menu_ingresada == 26:
+        controlador_opcion_veintiseis(lista_jugadores)
+    elif opcion_de_menu_ingresada == 27:
+        controlador_opcion_veintisiete(lista_jugadores)
     elif opcion_de_menu_ingresada == 0:
         print("\nSaliendo del programa...")
         break
