@@ -294,7 +294,6 @@ def listar_nombres_jugadores_con_indice(lista:list) -> int:
     contador = 0
 
     if len(lista) > 0:
-        print("\n***** Lista de todos los jugadores del Dream Team *****\nIndice - Nombre Jugador\n-----------------------")
         for jugador in lista:
             print(f"{contador} - {jugador['nombre']}")
             contador+=1
@@ -342,13 +341,13 @@ def encontrar_jugador_por_indice(lista:list, indice_a_buscar:int) -> dict:
         
         Returns:
         tipo : int
-            Retorna un diccionario vacio si algo salio mal, el diccionario del jugador
+            Retorna un diccionario vacio si algo salio mal, devuelve el diccionario del jugador
             en el caso que se haya realizado la tarea con exito.
     """
     retorno = {}
     contador = 0
 
-    if len(lista) > 0:
+    if (len(lista)) > 0 and (indice_a_buscar > -1 and indice_a_buscar < len(lista)):
         for jugador in lista:
             if contador == indice_a_buscar:
                 retorno = jugador
@@ -356,8 +355,6 @@ def encontrar_jugador_por_indice(lista:list, indice_a_buscar:int) -> dict:
             contador+=1
     else:
         print("\nERROR! No hay elementos cargados en la lista como para buscar un jugador.")
-
-    print(retorno)
 
     return retorno
         
@@ -443,7 +440,7 @@ def generar_archivo_csv(jugador:dict) -> int:
             writer = csv.writer(archivo_csv)
             writer.writerow(encabezado)
             writer.writerow(estadisticas)
-        print("El archivo CSV ya se ha generado con exito.")
+        print("\nEl archivo CSV ya se ha generado con exito!")
         retorno = 1
     else:
         print("\nERROR! No hay elementos cargados como para ejecutar esta opción. Realice una operación en la opción 2 antes de realizar una operación en la opción 3.")
@@ -478,8 +475,8 @@ def pedir_un_nombre_regex(mensaje:str, mensaje_de_error:str) -> str:
         tipo : int
             Retorna una variable tipo string vacia si sale algo mal, retorna una cadena con un nombre en el cas oque este bien validado.
     """
-    patron = r"^[A-Za-z\s]+$"
     retorno = ""
+    patron = r"^[A-Za-z\s]+$"    
 
     while True:
         nombre_ingresado = input(mensaje)
@@ -504,15 +501,11 @@ def formalizar_nombre_completo(nombre_completo:str) -> str:
             Retorna el nombre formalizado.
     """
     nombre_completo = nombre_completo.lower()
-
-    nombres_aux = nombre_completo.split(" ")
-
+    nombres = nombre_completo.split(" ")
     nombre_completo_aux = []
-    # nombre_completo_aux = [nombres_aux.capitalize() for nombres_aux in nombres_aux]
-    for nombre_aux in nombres_aux:
 
+    for nombre_aux in nombres:
         nombre_completo_aux.append(nombre_aux.capitalize())
-
     nombre_formalizado = " ".join(nombre_completo_aux)
 
     return nombre_formalizado
@@ -529,8 +522,8 @@ def encontrar_jugador_por_nombre(lista:list, nombre_a_buscar:str) -> dict:
         
         Returns:
         tipo : int
-            Retorna un diccionario vacio si algo salio mal, el diccionario del jugador
-            en el caso que se haya realizado la tarea con exito.
+            Retorna un diccionario vacio si algo salio mal, devuelve el diccionario del jugador
+            encontrado en el caso que se haya realizado la tarea con exito.
     """
     retorno = {}
 
@@ -559,7 +552,6 @@ def mostrar_logros_un_jugador(jugador:dict) -> int:
     retorno = -1
 
     if jugador != {}:
-        print(f"\n ***** Todos los logros de {jugador['nombre']} *****")
         for logro in jugador['logros']:
             print(f"{logro}")
         retorno = 1

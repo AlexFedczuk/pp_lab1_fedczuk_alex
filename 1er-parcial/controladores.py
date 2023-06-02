@@ -11,7 +11,7 @@ def controlador_opcion_uno(lista:list) -> int:
             Una lista de variables, en este caso serian jugadores del Dream Team.
         
         Returns:
-        Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
+            Retorna un numero entero (-1) si algo salio mal, (0) si la lista esta vacia o (1) si se pudo realizar la tarea con exito.
     """
     retorno = -1
 
@@ -35,12 +35,13 @@ def controlador_opcion_dos(lista:list) -> dict:
             Una lista de variables, en este caso serian jugadores del Dream Team.
         
         Returns:
-        Retorna un diccionario vacio ({}) si algo salio mal, un diccionario con la informacion
+            Retorna un diccionario vacio si algo salio mal, un diccionario con la informacion
             del jugador seleccionado en la opcion 2.
     """
     retorno = {}
 
     if len(lista) > 0:
+        print("\n***** Lista de todos los jugadores del Dream Team *****\nIndice - Nombre Jugador\n-----------------------")
         listar_nombres_jugadores_con_indice(lista)
         indice_elegido = pedir_indice_jugador(lista)
         jugador_encontrado = encontrar_jugador_por_indice(lista, indice_elegido)
@@ -91,6 +92,7 @@ def controlador_opcion_cuatro(lista:list) -> int:
         nombre_ingresado = pedir_un_nombre_regex("\nIngrese el nombre del jugador que quiere buscar: ",
                                                  "\nERROR! Ha ingresado un valor invalido. Ingrese caracteres alfabeticos.")
         jugador_encontrado = encontrar_jugador_por_nombre(lista, nombre_ingresado)
+        print(f"\n ***** Todos los logros de {jugador_encontrado['nombre']} *****")
         mostrar_logros_un_jugador(jugador_encontrado)
         retorno = 1
     else:
