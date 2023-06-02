@@ -1,4 +1,5 @@
-from funciones import *
+from funciones.funciones_json import *
+from funciones.funciones_menus import *
 from controladores import *
 
 # Ubicacion del archivo en mi PC: C:/Users/Alex Yago Fedczuk/Desktop/1er-parcial/dt.json

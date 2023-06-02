@@ -1,4 +1,6 @@
-from funciones import *
+from funciones.funciones_listas import *
+from funciones.funciones_input import *
+from funciones.funciones_csv import *
 
 
 def controlador_opcion_uno(lista:list) -> int:
