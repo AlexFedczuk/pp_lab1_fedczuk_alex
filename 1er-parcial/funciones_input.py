@@ -1,4 +1,4 @@
-from funciones_validaciones import *
+
 from funciones import *
 
 def pedir_un_numero_entero(mensaje:str) -> int:
